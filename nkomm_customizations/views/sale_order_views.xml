@@ -32,4 +32,21 @@
             </xpath>
         </field>
     </record>
+    <record id="nkomm_sale_subscription_order_view_form" model="ir.ui.view">
+        <field name="name">Nkomm Subscription Order Form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_order_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='next_invoice_date'][1]" position="attributes">
+                <attribute name="attrs">{'required': [('recurrence_id', '!=', False), ('state', 'in', ['sale',
+                    'done'])], 'readonly': 1}
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='next_invoice_date'][2]" position="attributes">
+                <attribute name="attrs">{'required': [('recurrence_id', '!=', False), ('state', 'in', ['sale',
+                    'done'])]}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
